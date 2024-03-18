@@ -63,3 +63,34 @@ class landslide_damaged(models.Model):
 class landslide_money(models.Model):
     year = models.IntegerField("년도")
     amount_of_damaged = models.BigIntegerField("피해액")
+
+class landslide_sido_damaged(models.Model):
+    YEAR_CHOICES = [
+        ('2011', '2011'),
+        ('2012', '2012'),
+        ('2013', '2013'),
+        ('2014', '2014'),
+        ('2015', '2015'),
+        ('2016', '2016'),
+        ('2017', '2017'),
+        ('2018', '2018'),
+        ('2019', '2019'),
+    ]
+    year = models.CharField(max_length=5, choices=YEAR_CHOICES, primary_key=True, default = 0)
+    seoul = models.FloatField("서울", default=0.0)
+    busan = models.FloatField("부산", default=0.0)
+    daegu = models.FloatField("대구", default=0.0)
+    incheon = models.FloatField("인천", default=0.0)
+    gwangju = models.FloatField("광주", default=0.0)
+    daejeon = models.FloatField("대전", default=0.0)
+    ulsan = models.FloatField("울산", default=0.0)
+    sejong = models.FloatField("세종", default=0.0)
+    gyeonggi = models.FloatField("경기", default=0.0)
+    chungbuk = models.FloatField("충북", default=0.0)
+    chungnam = models.FloatField("충남", default=0.0)
+    jeonnam = models.FloatField("전남", default=0.0)
+    gyeongbuk = models.FloatField("경북", default=0.0)
+    gyeongnam = models.FloatField("경남", default=0.0)
+    jeju = models.FloatField("제주", default=0.0)
+    gangwon = models.FloatField("강원", default=0.0)
+    jeonbuk = models.FloatField("전북", default=0.0)
