@@ -15,7 +15,7 @@
         <title>ALVIN and SUPERBAND</title>
 
         <!-- For favicon png -->
-		<link rel="shortcut icon" type="image/icon" href="/static/assets/logo/favicon.png"/>
+		<link rel="shortcut icon" type="image/icon" href="/static/assets/logo/logo.jpg"/>
        
         <!--font-awesome.min.css-->
         <link rel="stylesheet" href="/static/assets/css/font-awesome.min.css">
@@ -23,93 +23,91 @@
 		<!--flat icon css-->
 		<link rel="stylesheet" href="/static/assets/css/flaticon.css">
 
-		<!--owl.carousel.css-->
+		<!--animate.css-->
+        <link rel="stylesheet" href="/static/assets/css/animate.css">
+
+        <!--owl.carousel.css-->
         <link rel="stylesheet" href="/static/assets/css/owl.carousel.min.css">
 		<link rel="stylesheet" href="/static/assets/css/owl.theme.default.min.css">
 		
-		<!-- login.css-->
-		<link rel="stylesheet" href="/static/assets/css/login.css">
-
         <!--bootstrap.min.css-->
         <link rel="stylesheet" href="/static/assets/css/bootstrap.min.css">
-
+		
 		<!-- bootsnav -->
 		<link rel="stylesheet" href="/static/assets/css/bootsnav.css" >	
-		
+        
+        <!--style.css-->
+        <link rel="stylesheet" href="/static/assets/css/style.css">
+        
+        <!--responsive.css-->
+        <link rel="stylesheet" href="/static/assets/css/responsive.css">
     </head>
-    <!--login 창 만들기-->
-	<body>
-		<header class="top-area"></header>
+
+    <body>
+        		<!-- top-area Start -->
+		<header class="top-area">
 			<div class="header-area">
-			<nav class="navbar navbar-default bootsnav navbar-fixed dark no-background">
+				<!-- Start Navigation -->
+			    <nav class="navbar navbar-default bootsnav navbar-fixed dark no-background">
+
+			        <div class="container">
+
+			            <!-- Start Header Navigation -->
+			            <div class="navbar-header">
+			                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+			                    <i class="fa fa-bars"></i>
+			                </button>
+			                <a class="navbar-brand" href="{% url 'index' %}">ALVIN and SUPERBAND</a>
+			            </div><!--/.navbar-header-->
+			            <!-- End Header Navigation -->
+
+			            <!-- Collect the nav links, forms, and other content for toggling -->
+			            <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
+			                <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+			                <li class=" smooth-menu active"></li>
+			                    <li class="smooth-menu"><a href="{%url 'nature:typhoon' %}">태풍</a></li>
+			                    <li class="smooth-menu"><a href="{%url 'nature:earthquake' %}">지진</a></li>
+			                    <li class="smooth-menu"><a href="{%url 'nature:landslide' %}">산사태</a></li>
+			                    <li class="smooth-menu"><a href="{%url 'nature:fires' %}">산불</a></li>
+			                    <li class="smooth-menu"><a href="{%url 'nature:post' %}">자유게시판</a></li>
+			                   
+			                </ul><!--/.nav -->
+			            </div><!-- /.navbar-collapse -->
+			        </div><!--/.container-->
+			    </nav><!--/nav-->
+			    <!-- End Navigation -->
+			</div><!--/.header-area-->
+
+		    <div class="clearfix"></div>
+
+		</header><!-- /.top-area-->
+		<!-- top-area End -->
+
+    <!--login 창 만들기-->
+		<!--about start -->
+		<section id="about" class="about">
 			<div class="container">
-
-				<!-- Start Header Navigation -->
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
-						<i class="fa fa-bars"></i>
-					</button>
-					<a class="navbar-brand" href="{% url 'index' %}">ALVIN and SUPERBAND</a>
-				</div><!--/.navbar-header-->
-				<!-- End Header Navigation -->
-
-				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
-					<ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
-					<li class=" smooth-menu active"></li>
-						<li class="smooth-menu"><a href="{%url 'nature:typhoon' %}">태풍</a></li>
-						<li class="smooth-menu"><a href="{%url 'nature:earthquake' %}">지진</a></li>
-						<li class="smooth-menu"><a href="{%url 'nature:landslide' %}">산사태</a></li>
-						<li class="smooth-menu"><a href="{%url 'nature:fires' %}">산불</a></li>
-						<li class="smooth-menu"><a href="{%url 'nature:post' %}">자유게시판</a></li>
-						<li class="smooth-menu"><a href="{%url 'users:login' %}">로그인</a></li>
-					   
-					</ul><!--/.nav -->
-			</div><!-- /.navbar-collapse -->
-			</div><!--/.container-->
-			</nav><!--/nav-->
-			<p>
-				<div class="page">
-					<div class="container">
-						<div class="left">
-						<div class="login">Login</div>
-						<div class="eula">당신의 생명은 안전합니까 ?</div>
-						</div>
-						<div class="right">
-						<svg viewBox="0 0 320 300">
-							<defs>
-							<linearGradient
-											inkscape:collect="always"
-											id="linearGradient"
-											x1="13"
-											y1="193.49992"
-											x2="307"
-											y2="193.49992"
-											gradientUnits="userSpaceOnUse">
-								<stop
-									style="stop-color:#ff00ff;"
-									offset="0"
-									id="stop876" />
-								<stop
-									style="stop-color:#ff0000;"
-									offset="1"
-									id="stop878" />
-							</linearGradient>
-							</defs>
-							<path d="m 40,120.00016 239.99984,-3.2e-4 c 0,0 24.99263,0.79932 25.00016,35.00016 0.008,34.20084 -25.00016,35 -25.00016,35 h -239.99984 c 0,-0.0205 -25,4.01348 -25,38.5 0,34.48652 25,38.5 25,38.5 h 215 c 0,0 20,-0.99604 20,-25 0,-24.00396 -20,-25 -20,-25 h -190 c 0,0 -20,1.71033 -20,25 0,24.00396 20,25 20,25 h 168.57143" />
-						</svg>
-						<div class="form">
-							<label for="email">Email</label>
-							<input type="email" id="email">
-							<label for="password">Password</label>
-							<input type="password" id="password">
-							<input type="submit" id="submit" value="Submit">
-						</div>
+				<div class="about-content">
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="single-about-txt">
+								<h3>
+									LOGIN
+								</h3>
+								<p>
+									
+								</p>
+								<div class="row">
+									
+								</div>
+							</div>
 						</div>
 					</div>
-				</div>				
-			</p>
-		
+				</div>
+			</div>
+		</section>			
+
+   
 		<!--footer-copyright start-->
 		<footer id="footer-copyright" class="footer-copyright">
 			<div class="container">
@@ -162,11 +160,9 @@
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
 		
+        
         <!--Custom JS-->
         <script src="/static/assets/js/custom.js"></script>
-
-		<!-- login.js-->
-		<script src="/static/assets/js/login.js"></script>
         
     </body>
 	

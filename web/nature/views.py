@@ -52,3 +52,4 @@ def fires_page(request):
     return render(request, 'fires.html', context)
 
 
+
