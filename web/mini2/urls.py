@@ -19,6 +19,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from mini2 import views
+#from nature.views import typhoon_money_graph
 
 
 urlpatterns = [
@@ -26,7 +27,7 @@ urlpatterns = [
     path("", views.index, name="index"),
     path("nature/", include("nature.urls")),
     path("users/", include("users.urls")),
-
+    #path("typhoon_money_graph/", typhoon_money_graph, name="typhoon_money_graph"),
 ]
 
 urlpatterns += static(

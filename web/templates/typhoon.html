@@ -96,7 +96,38 @@
 								</h3>
 
 								<p>
-									태풍 그래프
+									태풍 년도별 피해액 그래프
+									<!-- typhoon.html -->
+									<div>
+										<canvas id="myChart"></canvas>
+									</div>
+
+									<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+									<script>
+										const ctx = document.getElementById('myChart');
+
+										new Chart(ctx, {
+											type: 'bar',
+											data: {
+												labels: {{ labels|safe }},  
+												datasets: [{
+													label: '피해액',
+													data: {{ values|safe }},  
+													borderWidth: 1
+												}]
+											},
+											options: {
+												scales: {
+													y: {
+														beginAtZero: true
+													}
+												}
+											}
+										});
+									</script>
+
+									  
 								</p>
 								<br><br>
 								
