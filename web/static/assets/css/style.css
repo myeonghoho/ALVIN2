@@ -28,7 +28,6 @@ font-family: 'Poppins', sans-serif;
 *{
     padding: 0;
     margin: 0;
-    grid-auto-rows: auto;
 }
 
 *{
@@ -853,15 +852,4 @@ span.single-timeline-horizontal.spacial-horizontal-line {width: 88px;}
     0%   {bottom:0px;}
     100%  {bottom:7px;}
 }
-/*========================Thank you=================*/
-#custom_textarea {
-  width: 700px;
-  height: 500px;
-  font-size: 12px;
-  background-color: #8b8b8b1c;
-  resize: none;
-  color: black;
-  border: none;
-  border-bottom: 2px solid #0000007e;
-  outline: none;
-}
+/*========================Thank you=================
