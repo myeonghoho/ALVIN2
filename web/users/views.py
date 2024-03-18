@@ -32,33 +32,6 @@ def post_detail(request, post_id):
 
     return render(request, "users/post_detail.html", context)
 
-# def post_search(request):
-#     keyword = request.GET.get("keyword",None)
-#     print(keyword)
-    
-#     if keyword: # keyword값이 주어진 경우
-       
-#         posts = Post.objects.filter(title__contains=keyword)
-
-#     else: # keyword가 주어지지 않아, None이 할당된 경우
-#         posts = Post.objects.none() # 빈 QuerySet을 할당
-
-#     context = {
-#         "posts" : posts,
-#     }
-#     return render(request, "users/post_search.html", context)
-
-    # post = Post.objects.filter(title__contains=keyword).order_by("id")
-    # post = request.POST.get("post","")
-    # if post:
-    #     post = post.filter(title__contain=post)
-    #     context= {
-    #         "post": post
-    #     }
-    #     return render (request, "users/post_search.html", context)
-    
-    # else:
-    #     return render (request,"users/post_search.html")
 
 def post_add(request):
     if request.method == "POST": # method가 POST일 때
@@ -74,11 +47,3 @@ def post_add(request):
         return redirect(f"/users/{post.id}/")
 
     return render(request, "users/post_add.html")
-
-def post_search(request):
-        if request.method == 'POST':
-                search = request.POST['search']        
-                post = Post.objects.filter(title__contains=search)
-                return render(request, 'uses/post_search.html', {'search': search, 'post': post})
-        else:
-                return render(request, 'users/post_search.html', {})
