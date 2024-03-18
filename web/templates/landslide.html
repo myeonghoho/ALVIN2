@@ -141,49 +141,48 @@
 								</hr>
 								<p style="text-align: center;">
 									2011 ~ 2019 산사태로인한 총 피해액
-								</p>
-									<div>
-										<canvas id="myChart2"></canvas>
-									</div>
-										
-									<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-										
-									<script>
-										const ctx2 = document.getElementById('myChart2');
-										
-										new Chart(ctx2, {
-											type: 'bar',
-											data: {
-												labels: {{ years|safe }}, 
-												datasets: [{
-													label: '피해액(단위:백만원)',
-													data: {{ amounts|safe }},
-													backgroundColor: 'rgba(223, 193, 103, 0.5)',
-													borderColor: 'rgba(255, 215, 0, 1)',  
-													borderWidth: 1
-												}]
-											},
-											options: {
-												scales: {
-													y: {
-														beginAtZero: true,
-														title: {
-																display: true,
-																text: '단위:백만원',
-																color: 'gray',
-																font: {
-																	family: 'Times',
-																	size: 13,
-																	style: 'normal',
-																	lineHeight: 1.2
-																}
-															}
-													}
-												}
-											}
-										}
+								 </p>
+								 <div>
+									<canvas id="myChart2"></canvas>
+								 </div>
+									
+								 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+									
+								 <script>
+									const ctx2 = document.getElementById('myChart2');
+									
+									new Chart(ctx2, {
+									   type: 'bar',
+									   data: {
+										  labels: {{ years|safe }}, 
+										  datasets: [{
+											 label: '피해액(단위:백만원)',
+											 data: {{ amounts|safe }},
+											 backgroundColor: 'rgba(223, 193, 103, 0.5)',
+												 borderColor: 'rgba(255, 215, 0, 1)',  
+											 borderWidth: 1
+										  }]
+									   },
+									   options: {
+										  scales: {
+											 y: {
+												beginAtZero: true,
+												title: {
+																	 display: true,
+																	 text: '단위:백만원',
+																	 color: 'gray',
+																	 font: {
+																		 family: 'Times',
+																		 size: 13,
+																		 style: 'normal',
+																		 lineHeight: 1.2
+																	 }
+												   }
+											 }
+										  }
+									   }
 									});
-								</script>
+								 </script>
 								<br><br>
 								<h2 style="font-size: 25px; font-weight: bolder; text-align:center; padding: left 200px;"><mark><strong>국가 대비책</strong></mark></h2>
 								 <p>
