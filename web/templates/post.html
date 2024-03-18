@@ -69,7 +69,7 @@
 			                    <li class="smooth-menu"><a href="{%url 'nature:earthquake' %}">지진</a></li>
 			                    <li class="smooth-menu"><a href="{%url 'nature:landslide' %}">산사태</a></li>
 			                    <li class="smooth-menu"><a href="{%url 'nature:fires' %}">산불</a></li>
-			                    <li class="smooth-menu"><a href="{%url 'nature:post' %}">자유게시판</a></li>
+			                    <li class="smooth-menu"><a href="{%url 'users:post' %}">자유게시판</a></li>
 			                   
 			                </ul><!--/.nav -->
 			            </div><!-- /.navbar-collapse -->
@@ -88,74 +88,67 @@
     <div class="container">
         <div class="about-content">
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-12c">
                     <div class="single-about-txt">
 
                         <!-- 게시판 시작-->
                         <div class="section section-properties">
                             <div class="container">
                                 <div class="two_third first" style="height:800px">
-                                <div class="col-lg-6">
+                                <div class="col-lg-12">
                                     <h2 class="font-weight-bold text-primary heading text-center">자유게시판</h2>
-                                    <hr/><br><br>
+                                    <hr/>
+                                    <br>
+                                    <br>
                                         <!--검색창-->    
                                         <div id="board-search">
                                             <div class="container">
-                                            <div class="search-window">
-                                                <form action="">
-                                                    <div class="search-wrap">
-                                                        <label for="search" class="blind">공지사항 내용 검색</label>
-                                                        <input type=text size=45 class="input-sm" id="fd" name="fd" placeholder="검색어를 입력해주세요.">
-                                                        <button type="submit" class="btn btn-dark">검색</button>
+                                                <div class="search-window">
+                                                    <form action="">
+                                                        <div class="search-wrap">
+                                                            <label for="search" class="blind">공지사항 내용 검색</label>
+                                                            <input type=text size=45 class="input-sm" id="fd" name="fd" placeholder="검색어를 입력해주세요.">
+                                                            <button type="submit" class="btn btn-dark">검색</button>
+                                                            
                                                         
-                                                    
-                                                    </div><!--search-wrap-->
-                                                </form>
-                                            </div><!--search-window-->
+                                                        </div><!--search-wrap-->
+                                                    </form>
+                                                </div><!--search-window-->
                                             </div><!--검색창container-->
                                         </div><!--board-search-->
-                                    <br><br>
+                                    <br>
+                                    <br>
                         
-                                <!-- board list area -->
+                     
+                                    <!-- board list area -->
                                     <div id="board-list">
                                         <div class="container">
                                             <table class="table" id="user-table">
-                                                <!--<thead>
+                                                <thead>
                                                 <tr>
                                                     <th width="5%" class="text-center">번호</th>
                                                     <th width="35%" class="text-center">제목</th>
                                                     <th width="15%" class="text-center">이름</th>
                                                     <th width="17%" class="text-center">작성일</th>
                                                 </tr>
-                                                </thead>-->
-                                                <div id="post-list">
-                                                    <ul class="posts">
-                                                        {% for post in posts %}
-                                                        <li class="post">
-                                                            <!-- 각각의 제목과 내용을 나누어 표시 -->
-                                                            <h2><a href="">{{ post.title }}</a></h2>
-                                    
-                                                            <p>{{ post.content }}</p>
-                                                        </li>
-                                                        {% endfor %}
-                                                    </ul>
-                                                </div>
+                                                </thead>
                                                 
-                                                <!--<tbody>
+                                                <tbody>
                                                 <c:forEach var="vo" items="${list }">
+                                                    
+                                                {% for post in posts %}
                                                 <tr class="board_info">
-                                                    <td width="5%" class="text-center">${post.id}</td>
-                                                    <td width="35%"><a href="">${post.content }</a>
+                                                    <td width="10%" class="text-center"><a href="/users/{{ post.id }}/">{{post.id}}</a></td>
+                                                    <td width="35%"><a href="">{{post.title }}</a>
                                                         &nbsp;&nbsp;
-                                                        <c:if test="${vo.rcount>0 }">
-                                                            (${post.rcount })
-                                                        </c:if>
+                                                  
                                                     </td>
-                                                    <td width="15%" class="text-center">${post.name }</td>
-                                                    <td width="17%" class="text-center">${post.dbday }</td>
+                                                    <td width="15%" class="text-center">{{post.author}} </td>
+                                                    <td width="17%" class="text-center">{{post.created}}</td>
                                                 </tr>
+                                                {%endfor%}
                                                 </c:forEach>
-                                                </tbody>-->
+                                                </tbody>
                                             </table>
                                             
                                             <table>
@@ -164,21 +157,17 @@
                                                     <c:if test="${sessionScope.id!=null }">
                                                         <div class="wrap">
                                                             <a href="{%url 'users:post_add' %}" class="button">글쓰기</a>
+                                                            <br><br>
+                                                            <a href="{%url 'index' %}" class="button">메인으로</a>
                                                             
                                                         </div>
                                                     </c:if>
                                                     </td>
-                                
-                                                    <td class="text-right inline">
-                                                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-                                                            <a href="../freeboard/list.do?&page=${curpage>1?curpage-1:curpage}" class="btn btn-sm btn-success">이전</a>
-                                                            ${curpage } page / ${totalpage } pages
-                                                            <a href="../freeboard/list.do?&page=${curpage<totalpage?curpage+1:curpage}" class="btn btn-sm btn-success">다음</a>
-                                                    </td>
                                                 </tr>
                                             </table>
-                                        </div><!--board list container-->
-                                    </div><!--board list-->
+                                        </div>
+                                    </div>
+                                    <!--board list-->
                                 </div><!--게시판col-lg-6-->
                                 </div><!--게시판two_third first-->
                             </div><!--게시판 container-->

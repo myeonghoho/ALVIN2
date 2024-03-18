@@ -1,6 +1,8 @@
 from django.db import models
 
+
 # Create your models here.
+
 
 class Post(models.Model):
     title = models.CharField("제목", default=None, null=True, max_length=100)
@@ -10,4 +12,5 @@ class Post(models.Model):
     
 
     def __str__ (self):
-        return f"Post(id: {self.id})"
+        return self.title
+    
