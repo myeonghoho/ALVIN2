@@ -52,6 +52,3 @@ def fires_page(request):
     return render(request, 'fires.html', context)
 
 
-def post(request):
-    return render(request, 'post.html')
-
