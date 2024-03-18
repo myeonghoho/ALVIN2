@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        
+    </head>
+    <body>
+        <div id="board-search">
+            <div class="container">
+                <div class="search-window">
+                    <form action="">
+                        <div class="search-wrap">
+                            <label for="search" class="blind">공지사항 내용 검색</label>
+                            <input type=text size=45 class="input-sm" id="fd" name="fd" placeholder="검색어를 입력해주세요.">
+                            <button type="submit" class="btn btn-dark">검색</button>
+                            
+                        
+                        </div><!--search-wrap-->
+                    </form>
+                </div><!--search-window-->
+            </div><!--검색창container-->
+        </div><!--board-search-->
+        
+        {% if search %}        
+        <!-- 만약, 검색창에 입력한 값이 있다면 이라는 의미입니다.-->
+        <h1> 검색하신 {{ search }} post입니다. </h1>
+        <br>
+        {% for recipe in recipes %}        <!--검색 결과가 여러 개일 수 있기 때문에 반복문을 사용했습니다.--> 
+                {{ post.id }} <br>
+                {{ post.title }} <br>
+                <!-- {{ recipe.ingredient }} <br> -->
+        {% endfor %}
+        {% else %}        <!--검색창에 아무것도 입력하지 않았을 경우 뜨는 메시지입니다.-->
+        <h1>검색창에 입력해주세요. </h1>
+        {% endif %}
+        </form>
+        
+    </body>
+</html>
