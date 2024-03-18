@@ -4,6 +4,6 @@ from users import views
 app_name = "users"
 urlpatterns = [
     path("post/", views.post, name="post"),
+    path("login/", views.login_view, name="login"),
     path("post_add/", views.post_add, name="post_add"),
-    path("<int:post_id>/", views.post_detail, name="post_detail"),
 ]

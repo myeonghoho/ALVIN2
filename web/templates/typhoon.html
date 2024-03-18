@@ -9,32 +9,32 @@
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
         <!--font-family-->
-      <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&amp;subset=devanagari,latin-ext" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&amp;subset=devanagari,latin-ext" rel="stylesheet">
         
         <!-- title of site -->
         <title>ALVIN and SUPERBAND</title>
 
         <!-- For favicon png -->
-      <link rel="shortcut icon" type="image/icon" href="/static/assets/logo/logo.jpg"/>
+		<link rel="shortcut icon" type="image/icon" href="/static/assets/logo/logo.jpg"/>
        
         <!--font-awesome.min.css-->
         <link rel="stylesheet" href="/static/assets/css/font-awesome.min.css">
 
-      <!--flat icon css-->
-      <link rel="stylesheet" href="/static/assets/css/flaticon.css">
+		<!--flat icon css-->
+		<link rel="stylesheet" href="/static/assets/css/flaticon.css">
 
-      <!--animate.css-->
+		<!--animate.css-->
         <link rel="stylesheet" href="/static/assets/css/animate.css">
 
         <!--owl.carousel.css-->
         <link rel="stylesheet" href="/static/assets/css/owl.carousel.min.css">
-      <link rel="stylesheet" href="/static/assets/css/owl.theme.default.min.css">
-      
+		<link rel="stylesheet" href="/static/assets/css/owl.theme.default.min.css">
+		
         <!--bootstrap.min.css-->
         <link rel="stylesheet" href="/static/assets/css/bootstrap.min.css">
-      
-      <!-- bootsnav -->
-      <link rel="stylesheet" href="/static/assets/css/bootsnav.css" >   
+		
+		<!-- bootsnav -->
+		<link rel="stylesheet" href="/static/assets/css/bootsnav.css" >	
         
         <!--style.css-->
         <link rel="stylesheet" href="/static/assets/css/style.css">
@@ -44,22 +44,22 @@
     </head>
 
     <body>
-              <!-- top-area Start -->
-      <header class="top-area">
-         <div class="header-area">
-            <!-- Start Navigation -->
-             <nav class="navbar navbar-default bootsnav navbar-fixed dark no-background">
+        		<!-- top-area Start -->
+		<header class="top-area">
+			<div class="header-area">
+				<!-- Start Navigation -->
+			    <nav class="navbar navbar-default bootsnav navbar-fixed dark no-background">
 
-                 <div class="container">
+			        <div class="container">
 
-                     <!-- Start Header Navigation -->
-                     <div class="navbar-header">
-                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
-                             <i class="fa fa-bars"></i>
-                         </button>
-                         <a class="navbar-brand" href="{% url 'index' %}">ALVIN and SUPERBAND</a>
-                     </div><!--/.navbar-header-->
-                     <!-- End Header Navigation -->
+			            <!-- Start Header Navigation -->
+			            <div class="navbar-header">
+			                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+			                    <i class="fa fa-bars"></i>
+			                </button>
+			                <a class="navbar-brand" href="{% url 'index' %}">ALVIN and SUPERBAND</a>
+			            </div><!--/.navbar-header-->
+			            <!-- End Header Navigation -->
 
 			            <!-- Collect the nav links, forms, and other content for toggling -->
 			            <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
@@ -78,25 +78,56 @@
 			    <!-- End Navigation -->
 			</div><!--/.header-area-->
 
-          <div class="clearfix"></div>
+		    <div class="clearfix"></div>
 
-      </header><!-- /.top-area-->
-      <!-- top-area End -->
+		</header><!-- /.top-area-->
+		<!-- top-area End -->
 
 
 		<!--about start -->
-		<section id="about" class="about">
-			<div class="container">
-				<div class="about-content">
-					<div class="row">
-						<div class="col-sm-12" >
-							<div class="single-about-txt">
+		<section id="about" class="about" style ="margin:0 auto;">
+			<div class="container" style ="margin:0 auto;">
+				<div class="about-content" style ="margin:0 auto;">
+					<div class="row" style ="margin:0 auto;">
+						<div class="col-sm-6" style ="margin:0 auto;">
+							<div class="single-about-txt" style ="margin:0 auto;">
 								<h3 style="text-align: center;">
 									태풍
 								</h3>
 
 								<p>
-									태풍 그래프
+									태풍 년도별 피해액 그래프
+									<!-- typhoon.html -->
+									<div>
+										<canvas id="myChart"></canvas>
+									</div>
+
+									<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+									<script>
+										const ctx = document.getElementById('myChart');
+
+										new Chart(ctx, {
+											type: 'bar',
+											data: {
+												labels: {{ labels|safe }},  
+												datasets: [{
+													label: '피해액',
+													data: {{ values|safe }},  
+													borderWidth: 1
+												}]
+											},
+											options: {
+												scales: {
+													y: {
+														beginAtZero: true
+													}
+												}
+											}
+										});
+									</script>
+
+									  
 								</p>
 								<br><br>
 								
@@ -144,9 +175,8 @@
 									<br>
 								</p>
 								<br><br>
-								<div style="width:560px; height:315px; margin: 0 auto;">
-									<iframe style="width: 100%; height:100%;"  src="https://www.youtube.com/embed/oWu95ZitpTI?si=t0iOLZPFIDgv9-Eo&amp;start=78" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-								</div>
+								<iframe width="560" height="315" src="https://www.youtube.com/embed/oWu95ZitpTI?si=t0iOLZPFIDgv9-Eo&amp;start=78" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 								<div class="row">
 									
 								</div>
@@ -158,62 +188,62 @@
 		</section>		
 
 
-      <!--footer-copyright start-->
-      <footer id="footer-copyright" class="footer-copyright">
-         <div class="container">
-            <div class="hm-footer-copyright text-center">
-               <p>
-                  &copy; copyright Alvin & Superband</a>
-               </p><!--/p-->
-            </div><!--/.text-center-->
-         </div><!--/.container-->
+		<!--footer-copyright start-->
+		<footer id="footer-copyright" class="footer-copyright">
+			<div class="container">
+				<div class="hm-footer-copyright text-center">
+					<p>
+						&copy; copyright Alvin & Superband</a>
+					</p><!--/p-->
+				</div><!--/.text-center-->
+			</div><!--/.container-->
 
-         <div id="scroll-Top">
-            <div class="return-to-top">
-               <i class="fa fa-angle-up " id="scroll-top" ></i>
-            </div>
-            
-         </div><!--/.scroll-Top-->
-         
+			<div id="scroll-Top">
+				<div class="return-to-top">
+					<i class="fa fa-angle-up " id="scroll-top" ></i>
+				</div>
+				
+			</div><!--/.scroll-Top-->
+			
         </footer><!--/.footer-copyright-->
-      <!--footer-copyright end-->
-      
-      <!-- Include all js compiled plugins (below), or include individual files as needed -->
+		<!--footer-copyright end-->
+		
+		<!-- Include all js compiled plugins (below), or include individual files as needed -->
 
-      <script src="/static/assets/js/jquery.js"></script>
+		<script src="/static/assets/js/jquery.js"></script>
         
         <!--modernizr.min.js-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-      
-      <!--bootstrap.min.js-->
+		
+		<!--bootstrap.min.js-->
         <script src="/static/assets/js/bootstrap.min.js"></script>
-      
-      <!-- bootsnav js -->
-      <script src="/static/assets/js/bootsnav.js"></script>
-      
-      <!-- jquery.sticky.js -->
-      <script src="/static/assets/js/jquery.sticky.js"></script>
-      
-      <!-- for progress bar start-->
+		
+		<!-- bootsnav js -->
+		<script src="/static/assets/js/bootsnav.js"></script>
+		
+		<!-- jquery.sticky.js -->
+		<script src="/static/assets/js/jquery.sticky.js"></script>
+		
+		<!-- for progress bar start-->
 
-      <!-- progressbar js -->
-      <script src="/static/assets/js/progressbar.js"></script>
+		<!-- progressbar js -->
+		<script src="/static/assets/js/progressbar.js"></script>
 
-      <!-- appear js -->
-      <script src="/static/assets/js/jquery.appear.js"></script>
+		<!-- appear js -->
+		<script src="/static/assets/js/jquery.appear.js"></script>
 
-      <!-- for progress bar end -->
+		<!-- for progress bar end -->
 
-      <!--owl.carousel.js-->
+		<!--owl.carousel.js-->
         <script src="/static/assets/js/owl.carousel.min.js"></script>
 
 
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-      
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+		
         
         <!--Custom JS-->
         <script src="/static/assets/js/custom.js"></script>
         
     </body>
-   
+	
 </html>

@@ -44,7 +44,7 @@
     </head>
 
     <body>
-        		<!-- top-area Start -->
+        <!-- top-area Start -->
 		<header class="top-area">
 			<div class="header-area">
 				<!-- Start Navigation -->
@@ -69,7 +69,7 @@
 			                    <li class="smooth-menu"><a href="{%url 'nature:earthquake' %}">지진</a></li>
 			                    <li class="smooth-menu"><a href="{%url 'nature:landslide' %}">산사태</a></li>
 			                    <li class="smooth-menu"><a href="{%url 'nature:fires' %}">산불</a></li>
-			                    <li class="smooth-menu"><a href="{%url 'users:post' %}">자유게시판</a></li>
+			                    <li class="smooth-menu"><a href="{%url 'nature:post' %}">자유게시판</a></li>
 			                   
 			                </ul><!--/.nav -->
 			            </div><!-- /.navbar-collapse -->
@@ -83,32 +83,75 @@
 		</header><!-- /.top-area-->
 		<!-- top-area End -->
 
+        
+<!--글작성 감싸기-->
+<section id="about" class="about">
+    <div class="container">
+        <div class="about-content">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="single-about-txt">
 
-		<!--about start -->
-		<section id="about" class="about">
-			<div class="container">
-				<div class="about-content">
-					<div class="row">
-						<div class="col-sm-12">
-							<div class="single-about-txt">
-								<h3>
-									산불
-								</h3>
-								<p>
-									산불 그래프
-								</p>
-								<div class="row">
-									
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>		
+                        <!-- 글작성 시작-->
+                        <div class="section section-properties">
+                            <div class="container">
+                                <div class="two_third first" style="height:800px">
+                                <div class="col-lg-6">
+                                    <h2 class="font-weight-bold text-primary heading text-center">게시글 작성</h2>
+                                    <hr/><br><br>
+                                        <!--작성창-->    
+                                        <div id="board-search">
+                                            <div class="container">
+                                            <div class="search-window">
+                                                <form method="POST" enctype="multipart/form-data">
+                                                    {% csrf_token %}
+                                                    <label for="author">작성자:</label>
+                                                    <input type="text" id="author" name="author" required><br>
+                                                  
+                                                    <label for="title">제목:</label>
+                                                    <input type="text" id="title" name="title" required><br>
+                                                  
+                                                    <label for="content">내용:</label><br>
+                                                    <textarea id="custom_textarea" name="content" rows="4" cols="50" required></textarea><br>
+                                                  
+                                                    <input type="submit" value="글 작성">
+                                                  </form>
+                                                <!--<form action="">
+                                                   <div class="search-wrap">
+                                                        <label for="글작성" style="text-align: center;">글 작성</label>
+                                                        <br><br>
+                                                        <label for="username">작성자</label>
+                                                        <input type="text" id="username" name="username" th:value="${post.name}">
+                                                        <br><br>
+                                                        <textarea class="input-sm" id="custom_textarea" name="custom_textarea" placeholder="글 입력하세요."> </textarea>
+                                                        <br><br>
+                                                        <button type="submit" class="btn btn-dark">게시하기</button>                                            
+                                                    </div> <!--search-wrap--> 
+                                                </form>-->
+                                            
+                                            </div><!--search-window-->
+                                            </div><!--작성창container-->
+                                        </div><!--board-search-->
+                                        <br><br>                                
+                                        <a href="{%url 'nature:post' %}" class="button">목록으로</a>                                             
+                                </div><!--글작성col-lg-6-->
+                                </div><!--글작성two_third first-->
+                            </div><!--글작성 container-->
+                        </div><!--section section-properties-->
+                        <!--글작성끝-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+        
 
 
-		<!--footer-copyright start-->
+
+        
+        <!--footer-copyright start-->
 		<footer id="footer-copyright" class="footer-copyright">
 			<div class="container">
 				<div class="hm-footer-copyright text-center">

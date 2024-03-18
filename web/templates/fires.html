@@ -15,7 +15,7 @@
         <title>ALVIN and SUPERBAND</title>
 
         <!-- For favicon png -->
-		<link rel="shortcut icon" type="image/icon" href="/static/assets/logo/favicon.png"/>
+		<link rel="shortcut icon" type="image/icon" href="/static/assets/logo/logo.jpg"/>
        
         <!--font-awesome.min.css-->
         <link rel="stylesheet" href="/static/assets/css/font-awesome.min.css">
@@ -89,46 +89,116 @@
 			<div class="container">
 				<div class="about-content">
 					<div class="row">
-						<div class="col-sm-12">
+						<div class="col-sm-6">
 							<div class="single-about-txt">
-								<h2 style="font-size: 25px; font-weight: bolder; text-align:center; padding: left 200px;">
-									<a href ="/media/portfolio/fire_map.html">▼ 산불 지역 자세히 보러 가기 ▼ </a>
-									<br><br>
-									<a href ="/media/portfolio/fire_map.html"><img src="/media/portfolio/fire_map.jpg"></a>
-									</h2>
-								<div class="row">
-									<br><br>
-										<h2 style="font-size: 25px; font-weight: bolder; text-align:center; padding: left 200px;"><mark><strong>
-										국가 대비
-										</strong></mark></h2>
-										<p>
-										1. 민간 건축물 내진보강 활성화를 위해 제도를 개선하고 인센티브 제공을 지속적으로 확대
-										<br>
-										2. 초고층 건축물∙신축 공동주택에 적용되는 최신 내진 설계
-										<br>
-										3. "안전지대는 없다” 적극적인 내진설계 연구∙개발
-										<br>
-										</p>
-										<br><br>
-										<h2 style="font-size: 25px; font-weight: bolder; text-align:center; padding: left 200px;"><mark><strong>
-										개인 대비
-										</strong></mark></h2>
-										<p>
-										1. 산과 가까운 곳에서 쓰레기, 영농부산물 등을 소각하지 않습니다.
-										<br>
-										2. 가족과 함께 비상연락망과 대피 시 각자의 역할을 정하도록 합니다.
-										<br>
-										3. 산불에 대비하여 비상용품을 준비해 두고 보관장소와 사용법을 알아둡니다.<br>
-										- 비상식품: 물, 통조림, 라면 등 가열하지 않고 먹을 수 있는 것<br>
-										- 구급약품: 연고, 감기약, 소화제, 복용중인 약 등이 포함된 구급함<br>									   
-										- 생활용품: 간단한 옷, 화장지, 물티슈, 라이터, 여성용품, 비닐봉투<br>									   
-										- 기타: 라디오, 손전등 및 건전지, 휴대전화, 보조배터리, 비상금, 비상연락망 등<br>
-										<br>
-										</p>
-										<br><br>
-										<h2 style="font-size: 25px; font-weight: bolder; text-align:center; padding: left 200px;"><strong><mark># 미리 미리 알아두는 화재 대피 방법 </mark></strong></h2></br>
-									<iframe width="560" height="315" src="https://www.youtube.com/embed/Yai9NPVj1Tk?si=L6D-5ucpDNkyYUFZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+								<h3>
+									산불
+								</h3>
+								<p>
+									2014년 ~ 2023년 시도별 산불 피해면적 그래프
+								</p>
+								<div>
+									<canvas id="myChart"></canvas>
+								</div>
 									
+								<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+									
+								<script>
+									const ctx = document.getElementById('myChart');
+									
+									new Chart(ctx, {
+										type: 'bar',
+										data: {
+											labels: {{ sido|safe }}, 
+											datasets: [{
+												label: '시도별 피해면적',
+												data: {{ sum|safe }},
+												backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                								borderColor: 'rgba(255, 99, 132, 1)', 
+												borderWidth: 1
+											}]
+										},
+										options: {
+											scales: {
+												y: {
+													beginAtZero: true
+												}
+											}
+										}
+									});
+								</script>
+								<p>
+									2014년 ~ 2023년 시도별 산불 빈도수 그래프
+								</p>
+
+								<div>
+									<canvas id="myChart2"></canvas>
+								</div>
+									
+								<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+									
+								<script>
+									const ctx2 = document.getElementById('myChart2');
+									
+									new Chart(ctx2, {
+										type: 'bar',
+										data: {
+											labels: {{ sido|safe }}, 
+											datasets: [{
+												label: '시도별 산불 빈도수',
+												data: {{ count|safe }},
+												backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                								borderColor: 'rgba(255, 99, 132, 1)',
+												borderWidth: 1
+											}]
+										},
+										options: {
+											scales: {
+												y: {
+													beginAtZero: true
+												}
+											}
+										}
+									});
+								</script>
+
+								<p>
+									2014년 ~ 2022년 산불 피해액
+								</p>
+								<div>
+									<canvas id="myChart3"></canvas>
+								</div>
+									
+								<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+									
+								<script>
+									const ctx3 = document.getElementById('myChart3');
+									
+									new Chart(ctx3, {
+										type: 'bar',
+										data: {
+											labels: {{ year|safe }}, 
+											datasets: [{
+												label: '피해액',
+												data: {{ money|safe }},
+												backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                								borderColor: 'rgba(255, 99, 132, 1)',
+												borderWidth: 1
+											}]
+										},
+										options: {
+											scales: {
+												y: {
+													beginAtZero: true
+												}
+											}
+										}
+									});
+								</script>
+								
+								<div class="row">
+									
+								</div>
 							</div>
 						</div>
 					</div>
