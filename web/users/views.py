@@ -6,11 +6,25 @@ from users.models import Post
 
 def post(request):
     posts = Post.objects.all() # 모든 Post객체를 가진 QuerySet
+    keyword = request.GET.get('keyword', None)
+    
+    if keyword:
+        title_keyword = Post.objects.filter(title__contains = keyword)
 
     # 템플릿에 전달할 딕셔너리
-    context = {
-        "posts" : posts,
-    }
+        context = {
+            "posts" : posts,
+            "keyword" : keyword,
+            "title_keyword" : title_keyword,
+        }
+        return render(request, "post.html", context)    
+    
+    else:
+        # 아무런 필터가 없는 경우
+        context = {
+            "posts" : posts,
+        }
+        
     return render(request, "post.html", context)
 
 

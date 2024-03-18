@@ -91,10 +91,8 @@
 					<div class="row">
 						<div class="col-sm-12">
 							<div class="single-about-txt">
-								<h3>
-									산불
-								</h3>
-								<p>
+
+								<p style="text-align: center;">
 									2014년 ~ 2023년 시도별 산불 피해면적 그래프
 								</p>
 								<div>
@@ -121,13 +119,24 @@
 										options: {
 											scales: {
 												y: {
-													beginAtZero: true
+													beginAtZero: true,
+													title: {
+                                                            display: true,
+                                                            text: '헥타르(h)',
+                                                            color: 'gray',
+                                                            font: {
+                                                                family: 'Times',
+                                                                size: 13,
+                                                                style: 'normal',
+                                                                lineHeight: 1.2
+                                                            }
+                                                        }
 												}
 											}
 										}
 									});
 								</script>
-								<p>
+								<p style="text-align: center;">
 									2014년 ~ 2023년 시도별 산불 빈도수 그래프
 								</p>
 
@@ -162,7 +171,7 @@
 									});
 								</script>
 
-								<p>
+								<!-- <p>
 									2014년 ~ 2022년 산불 피해액
 								</p>
 								<div>
@@ -194,9 +203,9 @@
 											}
 										}
 									});
-								</script>
+								</script> -->
 								<h2 style="font-size: 25px; font-weight: bolder; text-align:center; padding: left 200px;">
-									<a href ="/media/portfolio/fire_map.html">▼ 산불 지역 자세히 보러 가기 ▼ </a>
+									<a href ="/media/portfolio/fire_map.html">▼ 2014~2023 지역별 산불 빈도수 자세히 보러 가기 클릭 ▼ </a>
 									<br><br>
 									<a href ="/media/portfolio/fire_map.html"><img src="/media/portfolio/fire_map.jpg"></a>
 									</h2>

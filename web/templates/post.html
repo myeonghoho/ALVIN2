@@ -104,12 +104,11 @@
                                         <div id="board-search">
                                             <div class="container">
                                                 <div class="search-window">
-                                                    <form action="">
+                                                    <form action="{% url 'users:post' %}", method ="GET">
                                                         <div class="search-wrap">
-                                                            <label for="search" class="blind">공지사항 내용 검색</label>
-                                                            <input type=text size=45 class="input-sm" id="fd" name="fd" placeholder="검색어를 입력해주세요.">
+                                                            <label for="keyword" class="blind">제목 검색</label>
+                                                            <input type=text size=45 class="input-sm" id="keyword" name="keyword" value="{{ keyword }}" placeholder="검색어를 입력해주세요.">
                                                             <button type="submit" class="btn btn-dark">검색</button>
-                                                            
                                                         
                                                         </div><!--search-wrap-->
                                                     </form>
@@ -135,18 +134,34 @@
                                                 
                                                 <tbody>
                                                 <c:forEach var="vo" items="${list }">
+                                                {% if title_keyword %}
+                                                <!-- 총 몇 개의 글이 뜨는지 보여줌 -->
+                                                    <p>"{{ keyword }}" 검색 결과입니다. 총 {{ title_keyword.count }}건이 검색되었습니다.</p>
+                                                        
+                                                    {% for post in title_keyword %}
+                                                    <tr class="board_info">
+                                                        <td width="10%" class="text-center"><a href="/users/{{ post.id }}/">{{post.id}}</a></td>
+                                                        <td width="35%"><a href="">{{post.title }}</a>
+                                                            &nbsp;&nbsp;
                                                     
-                                                {% for post in posts %}
-                                                <tr class="board_info">
-                                                    <td width="10%" class="text-center"><a href="/users/{{ post.id }}/">{{post.id}}</a></td>
-                                                    <td width="35%"><a href="">{{post.title }}</a>
-                                                        &nbsp;&nbsp;
-                                                  
-                                                    </td>
-                                                    <td width="15%" class="text-center">{{post.author}} </td>
-                                                    <td width="17%" class="text-center">{{post.created}}</td>
-                                                </tr>
-                                                {%endfor%}
+                                                        </td>
+                                                        <td width="15%" class="text-center">{{post.author}} </td>
+                                                        <td width="17%" class="text-center">{{post.created}}</td>
+                                                    </tr>
+                                                    {%endfor%}
+                                                {% else %}
+                                                    {% for post in posts %}
+                                                    <tr class="board_info">
+                                                        <td width="10%" class="text-center"><a href="/users/{{ post.id }}/">{{post.id}}</a></td>
+                                                        <td width="35%"><a href="">{{post.title }}</a>
+                                                            &nbsp;&nbsp;
+                                                    
+                                                        </td>
+                                                        <td width="15%" class="text-center">{{post.author}} </td>
+                                                        <td width="17%" class="text-center">{{post.created}}</td>
+                                                    </tr>
+                                                    {% endfor %}
+                                                {% endif %}
                                                 </c:forEach>
                                                 </tbody>
                                             </table>

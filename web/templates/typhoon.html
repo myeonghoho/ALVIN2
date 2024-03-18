@@ -91,13 +91,10 @@
 					<div class="row" style ="margin:0 auto;">
 						<div class="col-sm-12" style ="margin:0 auto;">
 							<div class="single-about-txt" style ="margin:0 auto;">
-								<h3 style="text-align: center;">
-									태풍
-								</h3>
 
-								<p>
+								<p style="text-align: center;">
 									태풍 년도별 피해액 그래프
-									<!-- typhoon.html -->
+
 									<div>
 										<canvas id="myChart"></canvas>
 									</div>
@@ -112,7 +109,7 @@
 											data: {
 												labels: {{ labels|safe }},  
 												datasets: [{
-													label: '피해액',
+													label: '피해액(단위: 천원)',
 													data: {{ values|safe }},  
 													borderWidth: 1
 												}]
@@ -120,7 +117,18 @@
 											options: {
 												scales: {
 													y: {
-														beginAtZero: true
+														beginAtZero: true,
+														title: {
+                                                            display: true,
+                                                            text: '단위:천원',
+                                                            color: 'gray',
+                                                            font: {
+                                                                family: 'Times',
+                                                                size: 13,
+                                                                style: 'normal',
+                                                                lineHeight: 1.2
+                                                            }
+                                                        }
 													}
 												}
 											}

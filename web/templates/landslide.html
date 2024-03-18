@@ -92,12 +92,94 @@
 						<div class="col-sm-12">
 							<div class="single-about-txt" >
 
-								<h3>
-									산사태
-								</h3>
-								<p>
-									산사태 그래프
+								<p style="text-align: center;">
+									2011 ~ 2019 산사태 시도별 총 피해면적
 								</p>
+								<div>
+									<canvas id="myChart"></canvas>
+								</div>
+									
+								<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+									
+								<script>
+									const ctx = document.getElementById('myChart');
+									
+									new Chart(ctx, {
+										type: 'bar',
+										data: {
+											labels: ["서울", "부산", "대구", "인천", "광주", "대전", "울산", "세종", "경기", "충북", "충남", "전남", "경북", "경남", "제주", "강원", "전북"], 
+											datasets: [{
+												label: '시도별 피해면적(단위:h)',
+												data: {{ totals|safe }},
+												backgroundColor: 'rgba(223, 193, 103, 0.5)',
+                								borderColor: 'rgba(255, 215, 0, 1)',  
+												borderWidth: 1
+											}]
+										},
+										options: {
+											scales: {
+												y: {
+													beginAtZero: true,
+													title: {
+                                                            display: true,
+                                                            text: '헥타르(h)',
+                                                            color: 'gray',
+                                                            font: {
+                                                                family: 'Times',
+                                                                size: 13,
+                                                                style: 'normal',
+                                                                lineHeight: 1.2
+                                                            }
+                                                        }
+												}
+											}
+										}
+									});
+								</script>
+								<p style="text-align: center;">
+									2011 ~ 2019 산사태로인한 총 피해액
+								</p>
+								<div>
+									<canvas id="myChart2"></canvas>
+								</div>
+									
+								<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+									
+								<script>
+									const ctx2 = document.getElementById('myChart2');
+									
+									new Chart(ctx2, {
+										type: 'bar',
+										data: {
+											labels: {{ years|safe }}, 
+											datasets: [{
+												label: '피해액(단위:백만원)',
+												data: {{ amounts|safe }},
+												backgroundColor: 'rgba(223, 193, 103, 0.5)',
+                								borderColor: 'rgba(255, 215, 0, 1)',  
+												borderWidth: 1
+											}]
+										},
+										options: {
+											scales: {
+												y: {
+													beginAtZero: true,
+													title: {
+                                                            display: true,
+                                                            text: '단위:백만원',
+                                                            color: 'gray',
+                                                            font: {
+                                                                family: 'Times',
+                                                                size: 13,
+                                                                style: 'normal',
+                                                                lineHeight: 1.2
+                                                            }
+														}
+												}
+											}
+										}
+									});
+								</script>
 								<br><br>
 								<h2 style="font-size: 25px; font-weight: bolder; text-align:center; padding: left 200px;"><mark><strong>
 									국가 대비
