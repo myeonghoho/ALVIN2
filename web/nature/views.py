@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-from nature.models import typhoon, typhoon_location, typhoon_money, earthquake, landslide_damaged, landslide_money, forest_fire_sido, forest_fire_money
+from nature.models import typhoon, typhoon_location, typhoon_money, earthquake, landslide_damaged, landslide_money,landslide_sido_damaged, forest_fire_sido, forest_fire_money
 from django.db.models import Sum, Count 
 
 # Create your views here.
@@ -25,7 +25,35 @@ def earthquake_page(request):
     return render(request, 'earthquake.html')
 
 def landslide_page(request):
-    return render(request, 'landslide.html')
+    field_names = []
+    totals = []
+
+    # 2011~2019년동안의 시도별 총 산사태 피해면적을 위한 데이터
+    for i in range(1, 18):  
+        # 시도명
+        field_name = landslide_sido_damaged._meta.get_fields()[i].name
+        # 피해면적
+        total = landslide_sido_damaged.objects.aggregate(total_amount=Sum(field_name))['total_amount']
+        totals.append(total)
+        field_names.append(field_name) 
+
+    # 산사태 피해액 그래프를 위한 데이터
+    # 년도
+    years = []
+    # 피해액
+    amounts = []
+    for item in landslide_money.objects.all():
+        years.append(item.year)
+        amounts.append(item.amount_of_damaged)
+
+    context = {
+        "field_names" : field_names,
+        "totals" : totals,
+        "years" : years,
+        "amounts" : amounts
+    }
+    return render(request, 'landslide.html', context)
+
 
 
 def fires_page(request):
