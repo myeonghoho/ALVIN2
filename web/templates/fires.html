@@ -92,83 +92,65 @@
 						<div class="col-sm-12">
 							<div class="single-about-txt">
 								<h2  style="color:#d92cf9; font-weight:bold; font-size:25px; text-align: center;"><strong>산불</strong></h2>
+								
 								<p style="text-align: center;">
-									2014년 ~ 2023년 시도별 산불 피해면적 그래프
+									2014~2023년 시도별 산불 피해면적 및 빈도수
 								</p>
 								<div>
-									<canvas id="myChart"></canvas>
+									<canvas id="myChart4"></canvas>
 								</div>
-								<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>	
+								<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>    
 								<script>
-									const ctx = document.getElementById('myChart');
-									
-									new Chart(ctx, {
+									const ctx4 = document.getElementById('myChart4');
+									new Chart(ctx4, {
 										type: 'bar',
 										data: {
-											labels: {{ sido|safe }}, 
 											datasets: [{
-												label: '시도별 피해면적',
+												type: 'bar',
+												label: '피해면적',
 												data: {{ sum|safe }},
 												backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                								borderColor: 'rgba(255, 99, 132, 1)', 
-												borderWidth: 1
-											}]
+												borderColor: 'rgba(255, 99, 132, 1)',
+												borderWidth: 1,
+												yAxisID: 'bar-y-axis'  // 바 차트를 위한 Y축 ID
+											}, {
+												type: 'line',
+												label: '빈도수',
+												data: {{ count|safe }},
+												backgroundColor: 'rgba(0, 100, 100, 0.5)',
+												borderColor: 'rgba(0, 100, 100, 1)',
+												borderWidth: 1,
+												yAxisID: 'line-y-axis'  // 라인 차트를 위한 Y축 ID
+											}],
+											labels: {{ sido|safe }},
 										},
 										options: {
 											scales: {
-												y: {
-													beginAtZero: true,
-													title: {
-                                                            display: true,
-                                                            text: '헥타르(h)',
-                                                            color: 'gray',
-                                                            font: {
-                                                                family: 'Times',
-                                                                size: 13,
-                                                                style: 'normal',
-                                                                lineHeight: 1.2
-                                                            }
-                                                        }
-												}
+												yAxes: [{
+													id: 'bar-y-axis',
+													type: 'linear',
+													position: 'left',
+													scaleLabel: {
+														display: true,
+														labelString: '피해면적',  // 피해면적 타이틀
+														fontColor: 'darkgreen'  // 타이틀 색상 설정
+													}
+												}, {
+													id: 'line-y-axis',
+													type: 'linear',
+													position: 'right',
+													scaleLabel: {
+														display: true,
+														labelString: '빈도수',  // 빈도수 타이틀
+														fontColor: 'darkgreen'  // 타이틀 색상 설정
+													}
+												}]
 											}
 										}
 									});
 								</script>
 								
-								<p style="text-align: center;">
-									2014년 ~ 2023년 시도별 산불 빈도수 그래프
-								</p>
-
-								<div>
-									<canvas id="myChart2"></canvas>
-								</div>
-									
-								<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-									
-								<script>
-									const ctx2 = document.getElementById('myChart2');
-									
-									new Chart(ctx2, {
-										type: 'bar',
-										data: {
-											labels: {{ sido|safe }}, 
-											datasets: [{
-												label: '시도별 산불 빈도수',
-												data: {{ count|safe }},
-												backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                								borderColor: 'rgba(255, 99, 132, 1)',
-												borderWidth: 1
-											}]
-										},
-										options: {
-											scales: {
-												y: {
-													beginAtZero: true
-												}
-											}
-										}
-									});
-								</script>
+								
 								<p style="text-align: center;">
 									지역별 1987~1996년 대비 2007~2016년 산불발생 건수 비교
 									<br><br>
@@ -221,6 +203,7 @@
 										}
 									});
 								</script>
+
 								<br><br>
 								<p style="text-align: center;">
 									발생원인 
