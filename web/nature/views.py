@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from nature.models import typhoon, typhoon_location, typhoon_money, earthquake, landslide_damaged, landslide_money,landslide_sido_damaged, forest_fire_sido, forest_fire_money
 from django.db.models import Sum, Count 
+from datetime import datetime
+
 
 # Create your views here.
 
@@ -69,6 +71,13 @@ def fires_page(request):
     for item in fires_money_all:
         year.append(item.year)
         money.append(item.amount_of_damaged)
+    # 2017년이상 2023년이하인 데이터만 필터링해서 시도별 산불 빈도수 추출하기
+    year17to23 = forest_fire_sido.objects.filter(year__gte=2017,  year__lte=2023).values("sido").annotate(count_17to23=Count('*'))
+    # 시도별로 따로담기
+    sido17to23 = [item['sido'] for item in year17to23]
+    # 빈도수 따로 담기
+    count17to23 = [item['count_17to23'] for item in year17to23]
+
 
     context = {
         "sido" : sido,
@@ -76,6 +85,8 @@ def fires_page(request):
         "count" : count,
         "year" : year,
         "money" : money,
+        "sido17to23" : sido17to23,
+        "count17to23" : count17to23,
     }
     return render(request, 'fires.html', context)
 
