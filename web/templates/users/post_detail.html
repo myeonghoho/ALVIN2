@@ -1,12 +1,28 @@
-{% extends '_base.html' %}
+{% extends 'base.html' %}
 {%block content%}
-        <div id="navbar">
-            <span>{{ post.title }}</span>
-        </div>
-        <div id="post-detail">
-            <p>{{ post.content|linebreaksbr }}</p>
+<section id="about" class="about">
+    <div class="container">
+        <div class="about-content">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="single-about-txt">
 
-            <a href="{%url 'users:post' %}" class="button">목록으로</a>
+                        <div id="navbar">
+                            <a>제목 : </a>
+                            <span>{{ post.title }}</span>
+                        </div>
+                        <div id="post-detail">
+                            <a>내용 : </a>
+                            <a>{{ post.content|linebreaksbr }}</a>
+                            <hr><br><br>
 
+                            <a href="{%url 'users:post' %}" class="button">목록으로</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
+</section>
 {%endblock%}
