@@ -150,64 +150,63 @@
 									});
 								</script>
 								
-								
-								<p style="text-align: center;">
+								<hr/>
+								<h2 style="text-align: center;">
 									지역별 1987~1996년 대비 2007~2016년 산불발생 건수 비교
 									<br><br>
-									<img src="/media/portfolio/fire_compare.JPG">
-								</p>
+									<img src="/media/portfolio/fire_compare.JPG" style="text-align: center;">
+								</h2>
 
 								<p style="text-align: center;">
 									2017년 ~ 2023년 시도별 산불 빈도수
-								</p>
+								
 
-								<div>
-									<canvas id="myChart3"></canvas>
-								</div>
+									<div>
+										<canvas id="myChart3"></canvas>
+									</div>
 
-								<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-									
-								<script>
-									const ctx3 = document.getElementById('myChart3');
-									
-									new Chart(ctx3, {
-										type: 'bar',
-										data: {
-											labels: {{ sido17to23|safe }}, 
-											datasets: [{
-												label: '시도별 빈도수',
-												data: {{ count17to23|safe }},
-												backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                								borderColor: 'rgba(255, 99, 132, 1)', 
-												borderWidth: 1
-											}]
-										},
-										options: {
-											scales: {
-												y: {
-													beginAtZero: true,
-													title: {
-                                                            display: true,
-                                                            text: '횟수',
-                                                            color: 'gray',
-                                                            font: {
-                                                                family: 'Times',
-                                                                size: 13,
-                                                                style: 'normal',
-                                                                lineHeight: 1.2
-                                                            }
-                                                        }
-												}
+									<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+										
+									<script>
+										const ctx3 = document.getElementById('myChart3');
+										
+										new Chart(ctx3, {
+											type: 'bar',
+											data: {
+												labels: {{ sido17to23|safe }}, 
+												datasets: [{
+													label: '시도별 빈도수',
+													data: {{ count17to23|safe }},
+													backgroundColor: 'rgba(255, 99, 132, 0.2)',
+													borderColor: 'rgba(255, 99, 132, 1)', 
+													borderWidth: 1
+												}]
 											},
-											indexAxis: 'y' //수평차트 만들기
-										}
-									});
-								</script>
-
+											options: {
+												scales: {
+													y: {
+														beginAtZero: true,
+														title: {
+																display: true,
+																text: '횟수',
+																color: 'gray',
+																font: {
+																	family: 'Times',
+																	size: 13,
+																	style: 'normal',
+																	lineHeight: 1.2
+																}
+															}
+													}
+												},
+												indexAxis: 'y' //수평차트 만들기
+											}
+										});
+									</script>
+								</p>
 								<br><br>
 								<p style="text-align: center;">
-									발생원인 
-								</p>	
+									발생원인 	
 									<br><br>
 									<a href="https://www.forest.go.kr/kfsweb/kfi/kfs/cms/cmsView.do?mn=NKFS_02_02_01_03_01&cmsId=FC_001153">
 										<img src="/media/portfolio/fire_damage.jpg">
@@ -248,6 +247,7 @@
 										}
 									});
 								</script> -->
+							</p>
 								<br><br>
 								<h2 style="font-size: 25px; font-weight: bolder; text-align:center; padding: left 200px;">
 									<a href ="/media/portfolio/fire_map.html">▼ 2014~2023 지역별 산불 빈도수 자세히 보러 가기 클릭 ▼ </a>
